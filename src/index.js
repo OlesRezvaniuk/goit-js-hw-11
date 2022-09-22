@@ -48,6 +48,8 @@ async function onSearchInput(e) {
 async function newSearchQuery() {
   const data = await newPop.request();
 
+  await slowScroll(gallery);
+
   Notify.success(`Hooray! We found ${data.totalHits} images.`);
 
   let pageLength = data.hits.length;
@@ -78,6 +80,7 @@ async function newSearchQuery() {
 async function onButtonOfNextPage() {
   newPop.updatePage();
   newSearchQuery();
+  await slowScroll(gallery);
 }
 
 function removeGallery() {
@@ -125,4 +128,13 @@ function initializeName(resHits) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', privet);
+}
+
+function slowScroll(where) {
+  const { height } = where.getBoundingClientRect();
+  let scrollValue = 0;
+  window.scrollBy({
+    top: (scrollValue += height),
+    behavior: 'smooth',
+  });
 }
