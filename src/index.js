@@ -28,10 +28,10 @@ async function onSearchInput(e) {
   e.preventDefault();
 
   newPop.query = e.currentTarget.elements.searchQuery.value.trim();
-  zopa();
+  newSearchQuery();
 }
 
-async function zopa() {
+async function newSearchQuery() {
   const data = await newPop.request();
   // console.log(data);
   initializeName(data.hits);
