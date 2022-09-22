@@ -25,7 +25,7 @@ body {
 }
 #search-form > input[type='text']:hover,
 #search-form > input[type='text']:focus {
-  box-shadow: 0px 0px 5px rgb(0, 42, 88);
+  box-shadow: 0px 0px 10px rgb(0, 42, 88);
 }
 
 #search-form > button {
@@ -64,6 +64,10 @@ body > div:nth-child(2) > div {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   max-height: 350px;
+}
+
+body > div:nth-child(2) > div:hover {
+  box-shadow: 0px 0px 5px rgb(0, 42, 88);
 }
 
 .info {
@@ -117,4 +121,8 @@ body > div:nth-child(2) > div {
   outline: 1px solid rgb(41, 124, 213);
   cursor: pointer;
   color: rgb(41, 124, 213);
+  box-shadow: 0px 0px 10px rgb(0, 42, 88);
+}
+
+body > div > div {
 }
