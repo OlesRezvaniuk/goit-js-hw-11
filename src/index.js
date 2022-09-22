@@ -2,17 +2,7 @@
 import './css/styles.css';
 import { searchQuery } from './js/searchQuery';
 import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-const lightbox = new SimpleLightbox('.gallery a', {
-  captions: true,
-  captionType: 'attr',
-  captionsData: 'alt',
-  captionPosition: 'bottom',
-  captionDelay: 250,
-  docClose: true,
-});
 
 const newPop = new searchQuery(); // impor from searchQuery
 
@@ -100,7 +90,7 @@ function initializeName(resHits) {
         downloads,
       }) => {
         return `<div class="gallery__item post" style='overflow: hidden; position: relative'>
-           <a href="${largeImageURL}">
+           <a href="${largeImageURL}" class='gallery__link'>
             <img
               class="gallery__image"
               src="${webformatURL}"
@@ -129,6 +119,11 @@ function initializeName(resHits) {
     .join('');
   gallery.insertAdjacentHTML('beforeend', privet);
 }
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionDelay: 250,
+});
 
 function slowScroll(where) {
   const { height } = where.getBoundingClientRect();
