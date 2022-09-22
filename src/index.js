@@ -13,7 +13,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
   docClose: true,
 });
 
-const newPop = new searchQuery();
+const newPop = new searchQuery(); // impor from searchQuery
 
 const refs = {
   form: document.querySelector('#search-form'),
@@ -24,19 +24,56 @@ const gallery = document.querySelector('.gallery');
 const hiddenBtn = document.querySelector('.button-hidden');
 
 refs.form.addEventListener('submit', onSearchInput);
+hiddenBtn.addEventListener('click', onButtonOfNextPage);
 
+//Кнопка пошуку-------------------------------------------
 async function onSearchInput(e) {
   e.preventDefault();
 
   newPop.query = e.currentTarget.elements.searchQuery.value.trim();
+
+  // console.log(newPop.searchQuery);
+
+  newSearchQuery();
+  if (newPop.page > 0) {
+    removeGallery();
+    hiddenBtn.style.visibility = 'hidden';
+  }
+  if (!newPop.searchQuery) {
+    btnEl.disabled = true;
+  }
+}
+
+// Визов промісів-----------------------------------------
+async function newSearchQuery() {
+  const data = await newPop.request();
+
+  let pageLength = data.hits.length;
+
+  if (pageLength <= 0) {
+    console.log('pishov nahyi!');
+  } else if (pageLength > 1) {
+    hiddenBtn.style.visibility = 'visible';
+  }
+  initializeName(data.hits);
+  const totalPage = Math.ceil(data.totalHits / 40);
+  // console.log(totalPage); // Total value of page
+  // console.log(newPop.page); // Current value of page
+  const currentPAge = Math.ceil((newPop.page * pageLength) / 40);
+
+  if (newPop.page === totalPage) {
+    console.log('hvatit'); // Let insert to this Nitifix
+    hiddenBtn.disabled = true;
+  }
+}
+// Кнопка наступної сторінки---------------------------------
+async function onButtonOfNextPage() {
+  newPop.updatePage();
   newSearchQuery();
 }
 
-async function newSearchQuery() {
-  const data = await newPop.request();
-  // console.log(data);
-  initializeName(data.hits);
-  console.log(data.hits);
+function removeGallery() {
+  gallery.innerHTML = '';
 }
 
 function initializeName(resHits) {

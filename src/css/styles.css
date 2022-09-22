@@ -25,7 +25,7 @@ body {
 }
 #search-form > input[type='text']:hover,
 #search-form > input[type='text']:focus {
-  box-shadow: 0px 0px 5px rgb(3, 44, 88);
+  box-shadow: 0px 0px 5px rgb(0, 42, 88);
 }
 
 #search-form > button {
@@ -40,14 +40,18 @@ body {
   border-bottom-right-radius: 3px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  background-color: rgba(41, 124, 213, 0.248);
+  background-color: rgb(255, 255, 255);
+}
+
+#search-form > button {
+  margin-left: 10px;
 }
 
 #search-form > button:hover,
 #search-form > button:focus {
   cursor: pointer;
-  background-color: rgba(41, 124, 213, 0.363);
-  box-shadow: 0px 0px 5px rgb(6, 68, 134);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgb(0, 42, 88);
 }
 
 #search-form > button > img {
@@ -96,4 +100,5 @@ body > div:nth-child(2) > div {
 
 .button-hidden {
   visibility: hidden;
+  margin-bottom: 15px;
 }

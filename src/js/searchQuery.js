@@ -19,7 +19,7 @@ export class searchQuery {
     try {
       const rest = await axios.get(params.url, { params });
       const data = await rest.data;
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       error = new Error().stack;
