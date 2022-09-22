@@ -4,6 +4,14 @@ body {
   padding: 0;
   margin: 0;
   font-size: 14px;
+  position: relative;
+}
+
+body > header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  box-shadow: 0px 0px 5px rgb(0, 42, 88);
 }
 
 #search-form {
@@ -22,6 +30,7 @@ body {
   padding-left: 5px;
   outline: none;
   cursor: pointer;
+  transition: 250ms;
 }
 #search-form > input[type='text']:hover,
 #search-form > input[type='text']:focus {
@@ -41,10 +50,12 @@ body {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   background-color: rgb(255, 255, 255);
+  transition: 250ms;
 }
 
 #search-form > button {
   margin-left: 10px;
+  transition: 250ms;
 }
 
 #search-form > button:hover,
@@ -64,6 +75,7 @@ body > div:nth-child(2) > div {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   max-height: 350px;
+  transition: 250ms;
 }
 
 body > div:nth-child(2) > div:hover {
@@ -113,16 +125,13 @@ body > div:nth-child(2) > div:hover {
   border: none;
   color: white;
   border-radius: 4px;
+  transition: 250ms;
 }
 
-.button-hidden:focus,
 .button-hidden:hover {
   background-color: white;
   outline: 1px solid rgb(41, 124, 213);
   cursor: pointer;
   color: rgb(41, 124, 213);
   box-shadow: 0px 0px 10px rgb(0, 42, 88);
-}
-
-body > div > div {
 }
