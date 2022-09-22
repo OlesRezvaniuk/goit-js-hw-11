@@ -21,6 +21,7 @@ const refs = {
 const inputEl = refs.form.querySelector('input[type=text]');
 const btnEl = refs.form.querySelector('button[type=submit]');
 const gallery = document.querySelector('.gallery');
+const hiddenBtn = document.querySelector('.button-hidden');
 
 refs.form.addEventListener('submit', onSearchInput);
 
