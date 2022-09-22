@@ -3,6 +3,7 @@ import './css/styles.css';
 import { searchQuery } from './js/searchQuery';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
@@ -33,7 +34,6 @@ async function onSearchInput(e) {
   newPop.query = e.currentTarget.elements.searchQuery.value.trim();
 
   // console.log(newPop.searchQuery);
-
   newSearchQuery();
   if (newPop.page > 0) {
     removeGallery();
@@ -48,10 +48,14 @@ async function onSearchInput(e) {
 async function newSearchQuery() {
   const data = await newPop.request();
 
+  Notify.success(`Hooray! We found ${data.totalHits} images.`);
+
   let pageLength = data.hits.length;
 
   if (pageLength <= 0) {
-    console.log('pishov nahyi!');
+    Notify.failure(
+      '"Sorry, there are no images matching your search query. Please try again."'
+    );
   } else if (pageLength > 1) {
     hiddenBtn.style.visibility = 'visible';
   }
@@ -62,8 +66,12 @@ async function newSearchQuery() {
   const currentPAge = Math.ceil((newPop.page * pageLength) / 40);
 
   if (newPop.page === totalPage) {
-    console.log('hvatit'); // Let insert to this Nitifix
+    Notify.info("We're sorry, but you've reached the end of search results."); // Let insert to this Nitifix
     hiddenBtn.disabled = true;
+    hiddenBtn.style.backgroundColor = '#fff';
+    hiddenBtn.style.outline = '1px solid rgb(41, 124, 213)';
+    hiddenBtn.style.color = '#297cd5';
+    hiddenBtn.style.boxShadow = 'none';
   }
 }
 // Кнопка наступної сторінки---------------------------------
