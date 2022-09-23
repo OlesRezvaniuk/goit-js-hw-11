@@ -101,7 +101,7 @@ body > div:nth-child(2) > div:hover {
 }
 
 .info-item {
-  margin: 5px;
+  /* margin: 5px; */
 }
 .gallery__link {
   display: block;
@@ -140,4 +140,32 @@ body > div:nth-child(2) > div:hover {
 body > div > div > a {
   display: block;
   height: 100%;
+}
+@media screen and (max-width: 1000px) {
+  body {
+    font-size: 10px;
+  }
+  body > div > div > div > p {
+    margin: 0;
+  }
+  body > div > div > div {
+    display: block;
+    padding: 0;
+    padding-bottom: 3px;
+    padding-top: 3px;
+  }
+}
+@media screen and (max-width: 780px) {
+  body {
+    font-size: 5px;
+  }
+  body > div > div > div > p {
+    margin: 0;
+  }
+  body > div > div > div {
+    display: block;
+    padding: 0;
+    padding-bottom: 1px;
+    padding-top: 1px;
+  }
 }
