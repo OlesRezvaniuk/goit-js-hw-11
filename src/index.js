@@ -3,6 +3,7 @@ import './css/styles.css';
 import { searchQuery } from './js/searchQuery';
 import SimpleLightbox from 'simplelightbox';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import '../node_modules/simplelightbox/dist/simple-lightbox.min.css';
 
 const newPop = new searchQuery(); // impor from searchQuery
 
@@ -118,11 +119,16 @@ function initializeName(resHits) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', privet);
+  lightbox.refresh();
 }
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
+  captionType: 'attr',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
   captionDelay: 250,
+  docClose: true,
 });
 
 function slowScroll(where) {
